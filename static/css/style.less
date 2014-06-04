@@ -1,0 +1,735 @@
+/* ==========================================================================
+   Blanc Church - C of E Basic!
+   ========================================================================== */
+
+@import (less) "normalize.css";
+
+////////////////////////////////////////////////////////////////////////////////
+// text-header theme
+
+@brand-color: #ad9cc6;
+@text-color:  #222222;
+@alt-color:   white;
+
+a {
+    color: @brand-color;
+    text-decoration: none;
+    &:hover {
+        color: @text-color;
+    }
+}
+
+hr {
+    margin: 0.5em 0;
+    height: 0.0625em;
+    background: lighten(@text-color, 70%);
+    border: none;
+}
+
+.more {
+    display: block;
+    float: right;
+    line-height: 1.625;
+    border: 0.25em solid @brand-color;
+    padding: 0.1em 1em 0 1em;
+    text-transform: uppercase;
+    &.ical { margin-top: -4em; }
+    &:hover {
+        background: @brand-color;
+        color: @alt-color;
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+html, body {
+    margin: 0; padding: 0;
+    font-size: 15px;
+    line-height: 1.333em;
+    font-family: 'Ubuntu', Arial, sans-serif;
+    color: #38343a;
+    background: white;
+    -webkit-font-smoothing: antialiased;
+}
+
+@width: 54.533em;
+
+.page {
+    width: @width;
+    margin: 0 auto;
+}
+
+.box {
+    display: block;
+    background: white;
+}
+
+a {
+    color:  @brand-color;
+    text-decoration: none;
+    &:hover {
+        color: darken(@brand-color, 10%);
+    }
+    /*transition: all .1s ease-out;
+    -webkit-transition: all .1s ease-out;
+    -moz-transition: all .1s ease-out;
+    -o-transition: all .1s ease-out;*/
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+}
+
+.head {
+    float: left;
+    h1 {
+        margin: 25px 0 0 0; padding: 0;
+        line-height: 1;
+        font-size: 1em;
+
+        a {
+            .box;
+            width: 17.067em;
+            height: 275px;
+            overflow: hidden;
+            background: url(../img/logo.png) 0 0 no-repeat;
+            text-indent: -100em;
+            margin-bottom: 1.7em;
+        }
+    }
+    .nav {
+        width: 17.067em;
+        margin-bottom: 1.6em;
+        ul {
+            .box;
+            margin: 0;
+            padding: 0;
+            border-top: 3px solid #554d59;
+
+            li {
+                list-style: none;
+                padding: 0;
+
+                a {
+                    overflow: hidden;
+                    display: block;
+                    font-size: 1.667em;
+                    line-height: 1.2em;
+                    text-decoration: none;
+                    color: @brand-color;
+                    background: white;
+                    padding: 0.5em 0.600em 0.290em 0.6em;
+                    border-top: 1px solid #dddbde;
+                    &:hover {
+                        color: darken(@brand-color, 10%);
+                    }
+                    &.active { color: black; }
+                    &.active.subnav { background: white; color: #38343a;border-bottom: none;}
+                }
+
+                ul {
+                    box-shadow: none;
+                    border-top: none;
+                    li {
+                        a {
+                            font-size: 1.2em;
+                            padding: 0.5em 0.800em 0.290em 1.8em;
+                            color: @brand-color;
+                            background: white;
+                            &:hover {
+                                color: darken(@brand-color, 10%);
+                            }
+                            &.active { background: white; color: #38343a; border-bottom: 0.09em solid rgb(229,229,229)}
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.head .nav .foot, .address {
+    font-size: 1em;
+    margin-top: 1.7em;
+    width: 17.067em;
+    padding: 0;
+    float: none;
+    ul {
+        .box;
+        overflow: hidden;
+        margin: 0; padding: 0;
+        border-top: 3px solid #554d59;
+        li {
+            display: block;
+            font-size: 1.200em;
+            line-height: 1.3em;
+            padding: 0.5em 0.833em 0.572em 0.833em;
+            border-top: 1px solid #dddbde;
+            a {
+                font-size: 1em;
+                line-height: 1.467em;
+                padding: 0;
+                border: none;
+                background: white;
+                color:  @brand-color;
+                &:hover {
+                    color: darken(@brand-color, 10%);
+                }
+            }
+        }
+    }
+}
+
+.address { display: none; margin: 1.7em 0 1.6em 1.6em; float: left;}
+
+.main {
+    .box;
+    width: 32.600em;
+    float: right;
+    margin-top: 1.7em;
+    padding: 0 1.6em 1.6em 1.6em;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+
+    h1 {
+        font-size: 2.667em;
+        line-height: 1em;
+        margin: 0.5em 0;
+        letter-spacing: -0.03em;
+    }
+
+    h2, h3 {
+        font-size: 1.667em;
+        line-height: 1.2em;
+    }
+
+    h2 { color: @brand-color; }
+
+    h4, label {
+        color: @brand-color;
+        font-size: 1.2em;
+        line-height: 1.467em;
+        margin: 0.5em 0;
+    }
+
+    img {
+        border: none;
+        &.header {
+            margin: 0 0 0 -1.6em;
+        }
+    }
+
+    ul {
+       //padding: 0 0 0 1.2em;
+        li {
+            margin-bottom: 1em;
+            padding: 0;
+        }
+    }
+
+    dl.sundays {
+        margin: 0;
+        padding: 0;
+        dt, dd {
+            overflow: auto;
+            padding: 0;
+        }
+        dt {
+            float: left;
+            width: 6em;
+        }
+        dd {
+            margin-left: 8.5em;
+        }
+    }
+
+    .postlist {
+       display: block;
+        margin: -1.6em -1.6em 0 -1.6em;
+        padding: 0;
+        li {
+           display: block;
+           overflow: auto;
+            padding: 0 1.6em 1.6em;
+            list-style: none;
+            border-bottom: 0.09em solid rgb(229,229,229);
+
+            h2 { margin-bottom: 0; }
+            h4 { margin-top: 0; }
+
+            &.image {
+                padding-left: 9em;
+                img.thumb { float: left; margin: 1.6em 0 0 -8em; width: 7em; height: 7em;}
+            }
+        }
+    }
+
+    hr {
+        border: none;
+        background: none;
+        margin: 0.5em 0;
+        border-top: 0.09em solid rgb(229,229,229);
+    }
+
+    .pagination {
+       display: block;
+       overflow: auto;
+       padding-top: 0.5em;
+        font-size: 1em;
+        margin-bottom: -0.7em;
+        .next { float: left; }
+        .prev { float: right; }
+    }
+
+    label {
+        display: block;
+        float: left;
+        width: 6em;
+        margin-top: 0;
+    }
+
+    form p { margin-top: 0; }
+
+    input, textarea {
+        width: 95%;
+        font-family: Helvetica, Arial, sans-serif;
+        font-size: 1.2em;
+        padding: 0.5em;
+        border: 0.09em solid rgb(229,229,229);
+    }
+
+    textarea { height: 6em; }
+
+    button.submit, .backlink {
+        display: block;
+        width: 100%;
+        float: none;
+        text-align: right;
+        border: none;
+        border-top: 0.09em solid rgb(229,229,229);
+        padding-right: 1.6em;
+        cursor: pointer;
+        background: white;
+        font-family: 'thefont', serif;
+        font-size: 1.2em;
+        color:  @brand-color;
+        text-decoration: none;
+        &:hover {
+            color: lighten(@brand-color, 10%);
+        }
+    }
+
+    .backlink { line-height: 1.6em; height: 1.6em; width: auto; padding: 0 0.5em; }
+
+    ul.errorlist {
+        margin: 0;
+        padding: 0;
+        li {
+            margin: 0;
+            list-style: none;
+            padding: 0;
+            color: rgb(145,13,13);
+        }
+    }
+}
+
+body.nopad {
+    .main { padding: 0; width: 35.800em; }
+    .pad { padding: 0 1.6em 0 1.6em;}
+}
+
+.boxs {
+    font-size: 1em;
+    width: 35.800em;
+    float: right;
+    display: block;
+
+
+    section {
+        .box;
+        position: relative;
+        margin: 1.7em 0 0 0;
+        width: 15.05em;
+        min-height: 17em;
+        padding: 0 1em;
+        color: #311161;
+        background: #ad9cc6;
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0 0 20px rgba(0,0,0,0.1);
+
+        &.left { float: left; background: #cec4dd; }
+        &.right { float: right; margin-right: 0; .callto { border-top: 1px solid #9480b2; } }
+
+        h3 {
+            color: white;
+            font-size: 1.667em;
+            line-height: 1.2em;
+            margin: 0.6em 0 0.3em 0;
+        }
+
+        h4 { font-size: 1.2em; line-height: 1.222em; margin: 0; }
+
+        .callto {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            font-size: 1.2em;
+            line-height: 2.167em;
+            margin: 0;
+            border-top: 1px solid #afa0c4;
+            a { padding: 0 1em; display: block; }
+        }
+
+        a { color: white;
+            &:hover {
+                color: #311161;
+            }
+        }
+    }
+}
+
+.footer {
+    .box;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    margin: 1.7em 0;
+    float: right;
+    width: 22.7em;
+    padding: 0px 1em 0px 12em;
+    line-height: 3.5em;
+    height: 3.5em;
+    background: url(../img/church-of-england.png) top left no-repeat;
+
+    cite, p {
+        font-size: 0.800em;
+        margin: 0;
+    }
+    cite {
+        float: right;
+        font-style: normal;
+        a:hover { color: #FB2668; }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// events
+
+.events-table {
+    width: 100%;
+    display: table;
+    overflow: hidden;
+
+    h1 {
+        font-size: 2em;
+    }
+
+    section {
+        display: table-cell;
+        width: 50%;
+        h2 {
+            padding-left: 0.75em;
+        }
+        &.regular-events {
+            border-right: .0625em solid lighten(@text-color, 70%);
+            h3 {
+                font-size: 1em;
+                position: absolute;
+                margin-left: 0;
+                border-left: 0.25em solid @brand-color;
+                padding-left: 0.25em;
+                text-transform: uppercase;
+            }
+        }
+    }
+    .event-list {
+        margin: 0;
+        padding: 0;
+        border: none;
+        overflow: hidden;
+
+        li {
+            margin-left: 4.625em;
+            padding-bottom: 1em;
+            &:last-child { border-bottom: none; }
+        }
+        h4, h5, p {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        h5 {
+            margin: 0.5em 0;
+            text-transform: uppercase;
+            color: lighten(@text-color, 40%);
+        }
+        p {
+            margin-top: 0;
+            font-size: 0.83em;
+        }
+        img {
+            width: 3em;
+            position: absolute;
+            margin-left: -3.5em;
+        }
+    }
+    .special-events {
+        .event-list {
+            li {
+                padding-left: 4.625em;
+                margin-left: 0;
+                border-bottom: 0.0625em solid lighten(@text-color, 70%);
+            }
+            li.noimage {
+                margin: 0;
+                padding-left: 1em;
+            }
+            p { margin-left: 1.506em; }
+        }
+    }
+    .regular-events {
+        .event-list {
+            border-bottom: 0.0625em solid lighten(@text-color, 70%);
+        }
+    }
+    .more {
+        margin-top: 1em;
+        float: none;
+
+    }
+}
+
+.event-detail {
+    overflow: hidden;
+}
+
+.event-list {
+    padding: 0;
+    li {
+        padding: 0 0 3em 0;
+        list-style: none;
+        border-bottom: .0625em solid lighten(@text-color, 70%);
+    }
+}
+
+.event {
+    &.summary.image {
+        img {
+            display: block;
+            height: auto;
+        }
+    }
+    &.detail {
+        padding: 1em 0;
+        &.image {
+            img {
+                display: block;
+                margin: -3em -2.625em 1em -2.625em;
+            }
+        }
+    }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// news
+
+.post-list {
+    padding: 0;
+
+    li {
+        overflow: hidden;
+        padding: 0 0 2em 0;
+        list-style: none;
+        border-bottom: .0625em solid lighten(@text-color, 70%);
+    }
+    .image {
+        padding-top: 2em;
+    }
+}
+
+.post {
+    &.summary.image {
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+    }
+    &.detail {
+        padding: 1em 0;
+        &.image {
+            img {
+                display: block;
+                width: 100%;
+                margin: -4em 0 1em 0;
+            }
+        }
+    }
+}
+
+.pagination {
+    overflow: hidden;
+    padding: 1em 0;
+    .prev, .next {
+        .more;
+    }
+    .prev { float: left; }
+}
+
+////////////////////////////////////////////////////////////////////////////////
+// responsive
+
+// tablet
+@media all and (min-width: 541px) and (max-width:37.5em) {
+    .foot, .main .content .wrap {
+        width: auto;
+        padding: 0 1em;
+    }
+}
+
+// mobile
+@media all and (min-width: 0) and (max-width:540px) {
+    .foot, .main .content .wrap {
+        width: auto;
+        padding: 0 1em;
+    }
+    .foot {
+        width: auto;
+        padding: 0 1em;
+        p, ul {
+            float: none;
+        }
+        ul li { margin: 0 0 5px 0; display: block; }
+    }
+    .side {
+        height: auto;
+        .news, .events {
+            position: static;
+            margin: 0;
+            padding: 0;
+            width: auto;
+            margin-bottom: -50px;
+        }
+        .events {
+            margin-top: -50px;
+        }
+    }
+    .events-table {
+        display: block;
+        h1 { padding-left: 0; }
+        section {
+            display: block;
+            width: auto;
+            &.regular-events {
+                border-right: none;
+            }
+        }
+    }
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+/* Single column - iPad Portrait etc (mommy bear)
+   ========================================================================== */
+
+@media screen and (min-width: 39.133em) and (max-width: 60em) {
+    .head, .nav, .main, .boxs, .foot, .footer {
+        float: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .head {
+        width: 39.133em;
+        overflow: auto;
+        margin-bottom: 0;
+        h1 {
+            float: left;
+            margin-left: 1.6em;
+        }
+        .nav {
+            float: right;
+            margin-right: 1.6em;
+            margin-top: 1.7em;
+            ul {
+                min-height: 18em;
+                ul { min-height: 0; }
+            }
+            .foot { display: none; }
+        }
+    }
+    .main { margin-top: 0; padding-top: 0.5em;
+        img.header { margin-top: -1.5em; }
+    }
+    .page { width: 39.133em }
+    .boxs { overflow: auto; }
+    .footer {
+        overflow: hidden;
+        height: auto;
+        width: 15.05em;
+        float: right;
+        margin-right: 1.6em;
+        text-align: right;
+        padding: 3em 0 0 0;
+        width: 17.067em;
+        background-position: top right;
+
+        cite {
+            float: none;
+            display: block;
+            border-bottom: 0.083em solid rgb(229,229,229);
+        }
+        p {
+            float: none;
+            display: block;
+            text-align: right;
+        }
+        cite, p { padding: 0 1.250em; }
+    }
+    .address { display: block; }
+}
+
+/* Narrow layout - Smaller than iPad (baby bear)
+   ========================================================================== */
+@media screen and (max-width: 39.132em) {
+    body {
+        margin: 0;
+        padding: 0 5%;
+    }
+    .head .nav .foot { display: none; }
+    .page, .head, .nav, .main, .boxs, .foot, .footer, .head .nav, .address, .boxs section {
+        float: none;
+        width: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .head h1 a {
+        width: auto;
+        background: white url(../img/logo.png) left top no-repeat;
+    }
+    .main img.header { width: 120%; margin: 0 0 0 -12%; }
+    .main { overflow: hidden;
+
+        dl.sundays {
+            dt { float: none; }
+            dd { margin-left: 0; }
+        }
+    }
+    .boxs section { min-height: 0; padding-bottom: 4em; display: block; float: none !important; }
+    .boxs { overflow: auto; }
+    .footer { width: auto; display: block; padding: 0;
+        cite {
+            float: none;
+            display: block;
+            text-align: right;
+            border-bottom: 0.083em solid rgb(229,229,229);
+        }
+        p {
+            float: none;
+            display: block;
+            text-align: right;
+        }
+        cite, p { padding: 0 1.250em; }
+    }
+    .address { display: block; }
+    body.nopad .main { width: auto; }
+}

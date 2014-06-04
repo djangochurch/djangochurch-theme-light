@@ -1,0 +1,87 @@
+{% load static from staticfiles %}{% load page_tags %}<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Site 5{% endblock %}</title>
+    <meta name="description" content="Simple Parish Site">
+    <meta name="author" content="DjangoChurch">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet'>
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <!--[if lt IE 9]>
+        <script src="{% static 'js/modernizr.js' %}"></script>
+    <![endif]-->
+    {% block endhead %}{% endblock %}
+</head>
+<body>
+
+<section class="page">
+    <header class="head">
+        <h1><a href="/">Simple Parish Site</a></h1>
+         <nav class="nav">
+            {% block nav %}
+            <ul>
+                {% get_root_pages as root_pages %}
+                {% for page, page_active in root_pages %}
+                    <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a>
+                        {% if page_active %}
+                            {% get_pages_at_level page as subnav_pages %}
+                            {% if subnav_pages %}
+                                <nav class="subnav">
+                                    <ul>
+                                        {% for page, page_active in subnav_pages %}
+                                            <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </nav>
+                            {% endif %}
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+            {% endblock nav %}
+
+            <div class="foot">
+                <ul>
+                    <li>St. Parish's<br />Church Street,<br />Townsville, England<br />B14 4NC</li>
+                    <li><a target="_blank" href="https://maps.google.co.uk/maps">Find us with Google Maps</a></li>
+                    <li><a href="mailto:info@example.org">info@example.org</a></li>
+                    <li>0121 496 0000</li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <article class="main">
+        {% block content %}{% endblock %}
+    </article>
+
+    <aside class="boxs">
+        <section class="right">
+            <h3><a href="/events/view/event1/">Remembrance</a></h3>
+            <h4>This is an events summary</h4>
+            <h4 class="callto"><a href="/events/calendar/">More Events...</a></h4>
+        </section>
+        <section class="left">
+            <h3><a href="/news/2013/09/24/testing-parish-website/">Testing the parish website</a></h3>
+            <h4>The opening of St Andrew's, Chelmund's Cross. <a href="/news/2013/09/24/testing-parish-website/">more</a></h4>
+            <h4 class="callto"><a href="/news/">More News...</a></h4>
+        </section>
+    </aside>
+
+    <div class="address">
+        <ul>
+            <li>St. Parish's<br />Church Street,<br />Townsville, England<br />B14 4NC</li>
+            <li><a target="_blank" href="https://maps.google.co.uk/maps">Find us with Google Maps</a></li>
+            <li><a href="mailto:info@example.org">info@example.org</a></li>
+            <li>0121 496 0000</li>
+        </ul>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2013 St. Parish's. All rights reserved.</p>
+    </footer>
+</section>
+
+</body>
+</html>
