@@ -1,13 +1,11 @@
-{% load static from staticfiles %}{% load page_tags %}<!DOCTYPE html>
+{% load static from staticfiles %}{% load news_tags events_tags %}<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{% block title %}Site 5{% endblock %}</title>
-    <meta name="description" content="Simple Parish Site">
-    <meta name="author" content="DjangoChurch">
+    <title>{% block title %}Django Church{% endblock %}</title>
+    <meta name="author" content="Django Church">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300' rel='stylesheet'>
-    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
-    <link rel="shortcut icon" href="/favicon.ico">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Ubuntu:300" rel="stylesheet">
     <!--[if lt IE 9]>
         <script src="{% static 'js/modernizr.js' %}"></script>
     <![endif]-->
@@ -17,28 +15,10 @@
 
 <section class="page">
     <header class="head">
-        <h1><a href="/">Simple Parish Site</a></h1>
+        <h1><a href="/">Django Church</a></h1>
          <nav class="nav">
             {% block nav %}
-            <ul>
-                {% get_root_pages as root_pages %}
-                {% for page, page_active in root_pages %}
-                    <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a>
-                        {% if page_active %}
-                            {% get_pages_at_level page as subnav_pages %}
-                            {% if subnav_pages %}
-                                <nav class="subnav">
-                                    <ul>
-                                        {% for page, page_active in subnav_pages %}
-                                            <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </nav>
-                            {% endif %}
-                        {% endif %}
-                    </li>
-                {% endfor %}
-            </ul>
+            {% include "includes/nav.html" only %}
             {% endblock nav %}
 
             <div class="foot">
@@ -58,14 +38,28 @@
 
     <aside class="boxs">
         <section class="right">
-            <h3><a href="/events/view/event1/">Remembrance</a></h3>
-            <h4>This is an events summary</h4>
-            <h4 class="callto"><a href="/events/calendar/">More Events...</a></h4>
+            {% get_upcoming_events 1 as events %}
+            {% for event in events %}
+                <h3><a href="{{ event.get_absolute_url }}">{{ event.title|truncatewords:5 }}</a></h3>
+                <h4>{{ event.summary|truncatewords:10 }} <a href="{{ event.get_absolute_url }}" title="{{ event.title }}">more</a></h4>
+                <h4 class="callto"><a href="{% url 'blanc_basic_events:events-home' %}">More Events...</a></h4>
+            {% endfor %}
         </section>
         <section class="left">
-            <h3><a href="/news/2013/09/24/testing-parish-website/">Testing the parish website</a></h3>
-            <h4>The opening of St Andrew's, Chelmund's Cross. <a href="/news/2013/09/24/testing-parish-website/">more</a></h4>
-            <h4 class="callto"><a href="/news/">More News...</a></h4>
+            {% get_latest_news 1 as news_list %}
+            {% for news in news_list %}
+                <h3><a href="{{ news.get_absolute_url }}">{{ news.title|truncatewords:5 }}</a></h3>
+                <h4>
+                    {% if news.teaser %}
+                        {{ news.teaser|truncatewords:10 }}
+                    {% else %}
+                        {{ news.content|striptags|truncatewords:10 }}
+                    {% endif %}
+
+                    <a href="{{ news.get_absolute_url }}" title="{{ news.title }}">more</a>
+                </h4>
+                <h4 class="callto"><a href="{% url 'blanc_basic_news:post-list' %}">More News...</a></h4>
+            {% endfor %}
         </section>
     </aside>
 
@@ -79,7 +73,7 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2013 St. Parish's. All rights reserved.</p>
+        <p>&copy; {% now "Y" %} St. Parish's. All rights reserved.</p>
     </footer>
 </section>
 
