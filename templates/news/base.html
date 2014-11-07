@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load page_tags news_tags %}
 
 
 {% block endhead %}
@@ -8,22 +7,5 @@
 
 
 {% block nav %}
-<ul>
-    {% get_root_pages "blanc_basic_news:post-list" as root_pages %}
-    {% for page, page_active in root_pages %}
-        <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
-    {% endfor %}
-</ul>
+{% include "includes/nav.html" with current_page='blanc_basic_news:post-list' news=True %}
 {% endblock nav %}
-
-
-{% block subnav %}
-<nav class="subnav">
-    <ul>
-        {% get_news_categories as news_categories %}
-        {% for i in news_categories %}
-            <li><a href="{{ i.get_absolute_url }}"{% if category == i or object.category == i %} class="active"{% endif %}>{{ i }}</a></li>
-        {% endfor %}
-    </ul>
-</nav>
-{% endblock subnav %}

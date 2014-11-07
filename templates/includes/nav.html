@@ -1,0 +1,35 @@
+{% load page_tags %}
+
+<ul>
+    {% get_root_pages current_page as root_pages %}
+    {% for page, page_active in root_pages %}
+        <li>
+            <a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a>
+
+            {% if page_active %}
+                {% if news %}
+                    {% load news_tags %}
+                    {% get_news_categories as news_categories %}
+                    <nav class="subnav">
+                        <ul>
+                            {% for i in news_categories %}
+                                <li><a href="{{ i.get_absolute_url }}"{% if category == i or object.category == i %} class="active"{% endif %}>{{ i }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% else %}
+                    {% get_pages_at_level current_page as subnav_pages %}
+                    {% if subnav_pages %}
+                        <nav class="subnav">
+                            <ul>
+                                {% for page, page_active in subnav_pages %}
+                                    <li><a href="{{ page.get_absolute_url }}"{% if page_active %} class="active"{% endif %}>{{ page.title }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
