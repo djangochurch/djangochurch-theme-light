@@ -702,9 +702,12 @@ body.nopad {
         margin-left: auto;
         margin-right: auto;
     }
-    .head h1 a {
-        width: auto;
-        background: white url(../img/logo.png) left top no-repeat;
+    .head h1 {
+        float: none;
+        a {
+            margin: 0 auto;
+            background: white url(../img/logo.png) left top no-repeat;
+        }
     }
     .main img.header { width: 120%; margin: 0 0 0 -12%; }
     .main { overflow: hidden;
@@ -732,4 +735,21 @@ body.nopad {
     }
     .address { display: block; }
     body.nopad .main { width: auto; }
+}
+
+@media screen and (max-width: 18em) {
+    .head h1 a {
+        width: 100%;
+        background-size: 100% !important;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .footer {
+        height: auto;
+        p {
+            margin-top: 3.5em;
+            text-align: left;
+        }
+    }
 }
