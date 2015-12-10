@@ -10,6 +10,10 @@
 @brand-color: #ad9cc6;
 @text-color:  #222222;
 @alt-color:   white;
+@left-section: fade(@brand-color, 60%);
+@right-section: @brand-color;
+@base-text-color: #38343a;
+@line: #dddbde;
 
 a {
     color: @brand-color;
@@ -47,7 +51,7 @@ html, body {
     font-size: 15px;
     line-height: 1.333em;
     font-family: 'Ubuntu', Arial, sans-serif;
-    color: #38343a;
+    color: @base-text-color;
     background: white;
     -webkit-font-smoothing: antialiased;
 }
@@ -104,7 +108,7 @@ h1, h2, h3, h4, h5, h6 {
             .box;
             margin: 0;
             padding: 0;
-            border-top: 3px solid #554d59;
+            border-top: 3px solid @text-color;
 
             li {
                 list-style: none;
@@ -119,12 +123,12 @@ h1, h2, h3, h4, h5, h6 {
                     color: @brand-color;
                     background: white;
                     padding: 0.5em 0.600em 0.290em 0.6em;
-                    border-top: 1px solid #dddbde;
+                    border-top: 1px solid @line;
                     &:hover {
                         color: darken(@brand-color, 10%);
                     }
                     &.active { color: black; }
-                    &.active.subnav { background: white; color: #38343a;border-bottom: none;}
+                    &.active.subnav { background: white; color: @base-text-color; border-bottom: none;}
                 }
 
                 ul {
@@ -139,7 +143,7 @@ h1, h2, h3, h4, h5, h6 {
                             &:hover {
                                 color: darken(@brand-color, 10%);
                             }
-                            &.active { background: white; color: #38343a; border-bottom: 0.09em solid rgb(229,229,229)}
+                            &.active { background: white; color: @base-text-color; }
                         }
                     }
                 }
@@ -158,13 +162,13 @@ h1, h2, h3, h4, h5, h6 {
         .box;
         overflow: hidden;
         margin: 0; padding: 0;
-        border-top: 3px solid #554d59;
+        border-top: 3px solid @text-color;
         li {
             display: block;
             font-size: 1.200em;
             line-height: 1.3em;
             padding: 0.5em 0.833em 0.572em 0.833em;
-            border-top: 1px solid #dddbde;
+            border-top: 1px solid @line;
             a {
                 font-size: 1em;
                 line-height: 1.467em;
@@ -352,13 +356,13 @@ body.nopad {
         width: 15.05em;
         min-height: 17em;
         padding: 0 1em;
-        color: #311161;
-        background: #ad9cc6;
+        color: darken(@text-color, 4%);
+        background: @right-section;
         border: 1px solid rgba(0,0,0,0.1);
         box-shadow: 0 0 20px rgba(0,0,0,0.1);
 
-        &.left { float: left; background: #cec4dd; }
-        &.right { float: right; margin-right: 0; .callto { border-top: 1px solid #9480b2; } }
+        &.left { float: left; background: @left-section; }
+        &.right { float: right; margin-right: 0; }
 
         h3 {
             color: white;
@@ -377,13 +381,13 @@ body.nopad {
             font-size: 1.2em;
             line-height: 2.167em;
             margin: 0;
-            border-top: 1px solid #afa0c4;
+            border-top: 1px solid fade(@text-color, 15%);
             a { padding: 0 1em; display: block; }
         }
 
         a { color: white;
             &:hover {
-                color: #311161;
+                color: darken(@text-color, 2%);
             }
         }
     }
@@ -404,11 +408,6 @@ body.nopad {
     cite, p {
         font-size: 0.800em;
         margin: 0;
-    }
-    cite {
-        float: right;
-        font-style: normal;
-        a:hover { color: #FB2668; }
     }
     p { text-align: right; }
 }
