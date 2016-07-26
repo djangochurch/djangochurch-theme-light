@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load thumbnail %}
 
 
 {% block title %}{{ page.title }} - {{ block.super }}{% endblock %}
@@ -12,5 +13,11 @@
 
 
 {% block content %}
+{% thumbnail page.hero_image.file "537" as thumb %}
+    <div class="hero-image">
+        <img src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="">
+    </div>
+{% endthumbnail %}
+
 {{ page.content|safe }}
 {% endblock content %}
